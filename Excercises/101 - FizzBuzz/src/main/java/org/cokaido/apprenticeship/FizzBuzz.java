@@ -7,6 +7,6 @@ public class FizzBuzz {
         if (number <= 0) {
             throw new RuntimeException();
         }
-        return "";
+        return String.valueOf(number);
     }
 }
