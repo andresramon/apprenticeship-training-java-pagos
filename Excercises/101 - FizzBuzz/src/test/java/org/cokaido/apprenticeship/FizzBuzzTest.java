@@ -12,6 +12,7 @@ class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         //when & then
         Assertions.assertThrows(RuntimeException.class,()-> fizzBuzz.getFizzBuzz(0));
+        Assertions.assertThrows(RuntimeException.class,()-> fizzBuzz.getFizzBuzz(-10));
     }
 
 
