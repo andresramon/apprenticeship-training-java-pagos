@@ -7,10 +7,12 @@ import org.junit.jupiter.api.Test;
 class FizzBuzzTest {
 
     @Test
-    void return1whenNumberIs1() {
-
-        String result = new FizzBuzz().getFizzBuzz(1);
-        String expectedResult="Fizz";
-        Assertions.assertEquals(expectedResult,result);
+    public void getFizzBuzzShouldThrowErrorWhenNumberIsBelowOrEqualsToZero(){
+        //given
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        //when & then
+        Assertions.assertThrows(RuntimeException.class,()-> fizzBuzz.getFizzBuzz(0));
     }
+
+
 }
