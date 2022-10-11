@@ -116,3 +116,7 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij
 /target/
+
+# Files of eclipse
+.classpath
+.settings	
