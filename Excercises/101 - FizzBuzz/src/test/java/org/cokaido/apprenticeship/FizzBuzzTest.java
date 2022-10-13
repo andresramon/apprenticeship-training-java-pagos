@@ -12,7 +12,8 @@ import java.util.stream.Stream;
 
 class FizzBuzzTest {
 
-	final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
+    final String FIZZ = "Fizz";
 	
     @Test
     public void getFizzBuzzShouldThrowErrorWhenNumberIsBelowOrEqualsToZero(){
@@ -48,6 +49,15 @@ class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
 
         Assertions.assertEquals(FIZZ, fizzBuzz.getFizzBuzz(input));
+    }
+
+
+    @ParameterizedTest @ValueSource(ints = {5, 10, 20, 25})
+    public void getFizzBuzzReturnBuzz(int input){
+        // given
+        FizzBuzz fizzBuzz = new FizzBuzz();
+
+        Assertions.assertEquals(BUZZ, fizzBuzz.getFizzBuzz(input));
     }
 
 

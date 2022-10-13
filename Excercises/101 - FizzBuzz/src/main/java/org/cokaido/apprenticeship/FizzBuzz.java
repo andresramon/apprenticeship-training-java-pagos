@@ -2,7 +2,8 @@ package org.cokaido.apprenticeship;
 
 public class FizzBuzz {
 
-	final String FIZZ = "Fizz";
+    public static final String BUZZ = "Buzz";
+    final String FIZZ = "Fizz";
 	
     public String getFizzBuzz(int number)
     {
@@ -12,6 +13,10 @@ public class FizzBuzz {
         
         if (isMultipleOfThree(number)) {
         	return FIZZ;
+        }
+
+        if (isMultipleOfFive(number)) {
+        	return BUZZ;
         }
         
         return String.valueOf(number);
@@ -24,5 +29,9 @@ public class FizzBuzz {
 	private boolean isMultipleOfThree(int number) {
 		return number % 3 == 0;
 	}
+
+    private boolean isMultipleOfFive(int number) {
+        return number % 5 == 0;
+    }
     
 }
