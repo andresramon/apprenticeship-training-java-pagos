@@ -12,6 +12,8 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class FizzBuzzTest {
 
+	final String FIZZ = "Fizz";
+	
     @Test
     public void getFizzBuzzShouldThrowErrorWhenNumberIsBelowOrEqualsToZero(){
         //given
@@ -37,5 +39,15 @@ class FizzBuzzTest {
         FizzBuzz fizzBuzz = new FizzBuzz();
         //when & then
         Assertions.assertEquals(output, fizzBuzz.getFizzBuzz(input));
+    }
+    
+    @Test
+    public void getFizzBuzzReturnFizz() {
+    	int inputNumberFizz = 3;
+    	
+    	// given
+	    FizzBuzz fizzBuzz = new FizzBuzz();
+	    
+	    Assertions.assertEquals(FIZZ, fizzBuzz.getFizzBuzz(inputNumberFizz));
     }
 }
