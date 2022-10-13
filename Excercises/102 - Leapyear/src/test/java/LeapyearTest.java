@@ -1,14 +1,18 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class LeapyearTest {
 
-    @Test
-    public void shouldBeLeapYearIfIsDivisibleByFourHundred() {
+    private static final Leapyear leapyear = new Leapyear();
+
+    @ParameterizedTest
+    @ValueSource(ints = {400, 800, 1200})
+    public void shouldBeLeapYearIfIsDivisibleByFourHundred(int year) {
         //given
-        Leapyear leapyear = new Leapyear();
+
         // when
-        boolean isLeap = leapyear.isLeap(400);
+        boolean isLeap = leapyear.isLeap(year);
         // then
         Assertions.assertTrue(isLeap);
 
