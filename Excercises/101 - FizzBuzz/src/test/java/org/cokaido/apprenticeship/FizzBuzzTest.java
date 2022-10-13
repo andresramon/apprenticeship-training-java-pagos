@@ -16,4 +16,12 @@ class FizzBuzzTest {
     }
 
 
+    @Test
+    public void getFizzBuzzReturnNumbers(){
+        //given
+        int numberToTest = 1;
+        FizzBuzz fizzBuzz = new FizzBuzz();
+        //when & then
+        Assertions.assertEquals(String.valueOf(numberToTest),fizzBuzz.getFizzBuzz(numberToTest));
+    }
 }
