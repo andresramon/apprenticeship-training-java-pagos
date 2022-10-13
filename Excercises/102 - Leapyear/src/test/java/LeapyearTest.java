@@ -18,4 +18,16 @@ public class LeapyearTest {
 
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {2008, 2012, 2016})
+    public void shouldBeLeapYearIfIsDivisibleByFourButNotByOneHundred(int year) {
+        //given
+
+        // when
+        boolean isLeap = leapyear.isLeap(year);
+        // then
+        Assertions.assertTrue(isLeap);
+
+    }
+
 }
