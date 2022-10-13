@@ -1,7 +1,13 @@
 public class Leapyear {
 
+    public boolean isMultipleOf(int year, int number) {
+        return year % number == 0;
+    }
 
     public boolean isLeap(int year) {
-        return year % 400 == 0 || (year % 4 == 0 && year % 100 != 0);
+        boolean isMultipleOfFourHundred = isMultipleOf(year, 400);
+        boolean isMultipleOfFourButNotByOneHundred = isMultipleOf(year, 4) &&
+                !isMultipleOf(year, 100);
+        return isMultipleOfFourHundred || isMultipleOfFourButNotByOneHundred;
     }
 }
