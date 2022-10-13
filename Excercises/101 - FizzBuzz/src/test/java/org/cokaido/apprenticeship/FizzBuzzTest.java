@@ -1,14 +1,14 @@
 package org.cokaido.apprenticeship;
 
 
-import java.util.stream.Stream;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.stream.Stream;
 
 class FizzBuzzTest {
 
@@ -41,13 +41,17 @@ class FizzBuzzTest {
         Assertions.assertEquals(output, fizzBuzz.getFizzBuzz(input));
     }
     
-    @Test
-    public void getFizzBuzzReturnFizz() {
-    	int inputNumberFizz = 3;
-    	
-    	// given
-	    FizzBuzz fizzBuzz = new FizzBuzz();
-	    
-	    Assertions.assertEquals(FIZZ, fizzBuzz.getFizzBuzz(inputNumberFizz));
+
+    @ParameterizedTest @ValueSource(ints = {3, 6, 9, 12})
+    public void getFizzBuzzReturnFizz(int input){
+        // given
+        FizzBuzz fizzBuzz = new FizzBuzz();
+
+        Assertions.assertEquals(FIZZ, fizzBuzz.getFizzBuzz(input));
     }
+
+
+
+
+
 }
