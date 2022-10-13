@@ -1,8 +1,14 @@
 package org.cokaido.apprenticeship;
 
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 class FizzBuzzTest {
 
@@ -16,12 +22,20 @@ class FizzBuzzTest {
     }
 
 
-    @Test
-    public void getFizzBuzzReturnNumbers(){
+    private static Stream<Arguments> argumentsForReturnNumbers() {
+    	return Stream.of(
+    			Arguments.of(1, "1"),
+    			Arguments.of(2, "2"),
+    			Arguments.of(4, "4")
+			);
+    }
+    
+    @ParameterizedTest
+    @MethodSource("argumentsForReturnNumbers")
+    public void getFizzBuzzReturnNumbers(int input, String output){
         //given
-        int numberToTest = 1;
         FizzBuzz fizzBuzz = new FizzBuzz();
         //when & then
-        Assertions.assertEquals(String.valueOf(numberToTest),fizzBuzz.getFizzBuzz(numberToTest));
+        Assertions.assertEquals(output, fizzBuzz.getFizzBuzz(input));
     }
 }
