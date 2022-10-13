@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 class FizzBuzzTest {
 
     public static final String BUZZ = "Buzz";
+    private static final String FIZZ_BUZZ = "FizzBuzz";
     final String FIZZ = "Fizz";
 	
     @Test
@@ -60,6 +61,14 @@ class FizzBuzzTest {
         Assertions.assertEquals(BUZZ, fizzBuzz.getFizzBuzz(input));
     }
 
+
+    @ParameterizedTest @ValueSource(ints = {15, 30, 45, 60})
+    public void getFizzBuzzReturnFizzBuzz(int input){
+        // given
+        FizzBuzz fizzBuzz = new FizzBuzz();
+
+        Assertions.assertEquals( FIZZ_BUZZ, fizzBuzz.getFizzBuzz(input));
+    }
 
 
 

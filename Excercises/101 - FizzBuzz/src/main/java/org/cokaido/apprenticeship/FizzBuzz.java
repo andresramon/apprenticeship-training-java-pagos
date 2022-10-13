@@ -2,15 +2,20 @@ package org.cokaido.apprenticeship;
 
 public class FizzBuzz {
 
-    public static final String BUZZ = "Buzz";
-    final String FIZZ = "Fizz";
-	
+    private static final String BUZZ = "Buzz";
+    private static final String FIZZ_BUZZ = "FizzBuzz";
+    private static final String FIZZ = "Fizz";
+
     public String getFizzBuzz(int number)
     {
         if (isNegativeOrZero(number)) {
             throw new RuntimeException();
         } 
-        
+
+        if (isDivisibleByThreeAndFive(number)) {
+            return FIZZ_BUZZ;
+        }
+
         if (isMultipleOfThree(number)) {
         	return FIZZ;
         }
@@ -22,7 +27,11 @@ public class FizzBuzz {
         return String.valueOf(number);
     }
 
-	private boolean isNegativeOrZero(int number) {
+    private boolean isDivisibleByThreeAndFive(int number) {
+        return isMultipleOfThree(number) && isMultipleOfFive(number);
+    }
+
+    private boolean isNegativeOrZero(int number) {
 		return number <= 0;
 	}
 
