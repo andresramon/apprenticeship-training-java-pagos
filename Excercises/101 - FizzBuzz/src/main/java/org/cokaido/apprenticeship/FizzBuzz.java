@@ -6,12 +6,23 @@ public class FizzBuzz {
 	
     public String getFizzBuzz(int number)
     {
-        if (number <= 0) {
+        if (isNegativeOrZero(number)) {
             throw new RuntimeException();
-        } else if (number % 3 == 0) {
+        } 
+        
+        if (isMultipleOfThree(number)) {
         	return FIZZ;
         }
         
         return String.valueOf(number);
     }
+
+	private boolean isNegativeOrZero(int number) {
+		return number <= 0;
+	}
+
+	private boolean isMultipleOfThree(int number) {
+		return number % 3 == 0;
+	}
+    
 }
