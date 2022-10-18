@@ -5,23 +5,23 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-public class RomanNumeralTest {
+public class RomanConverterTest {
 
     private static Stream<Arguments> romanSimpleValues() {
         return Stream.of(
-                Arguments.of(RomanValues.I, 1),
-                Arguments.of(RomanValues.V, 5),
-                Arguments.of(RomanValues.X, 10)
+                Arguments.of(RomanNumeral.I, 1),
+                Arguments.of(RomanNumeral.V, 5),
+                Arguments.of(RomanNumeral.X, 10)
                 );
     }
 
     @ParameterizedTest
     @MethodSource("romanSimpleValues")
-    public void shouldReturnNumberForSimpleValue(RomanValues romanValue, int number) {
+    public void shouldReturnNumberForSimpleValue(RomanNumeral romanValue, int number) {
         //given
-        RomanNumeral romanNumeral = new RomanNumeral();
+        RomanConverter romanConverter = new RomanConverter();
         //when and then
-        Assertions.assertEquals(number, romanNumeral.convert(romanValue));
+        Assertions.assertEquals(number, romanConverter.convert(romanValue));
 
     }
 }
