@@ -31,7 +31,7 @@ public class LeapyearTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1700, 1800, 1900})
+    @ValueSource(ints = {1700, 1800, 1900, 2017, 2018, 2019})
     public void shouldNotBeLeapYear(int year) {
         //given
 
