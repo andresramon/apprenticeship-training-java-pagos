@@ -1,3 +1,5 @@
+package org.cokaido.apprenticeship;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,7 +24,8 @@ public class RomanConverterTest {
 
     @ParameterizedTest
     @MethodSource("romanSimpleValues")
-    public void shouldReturnNumberForSimpleValue(RomanNumeral romanValue, int number) {
+    public void shouldReturnNumberForSimpleValue(RomanNumeral romanValue, int number)
+            throws InvalidRomanNumeralException{
         //given
         RomanConverter romanConverter = new RomanConverter();
         //when and then
@@ -31,11 +34,11 @@ public class RomanConverterTest {
     }
     
     @Test
-    public void shouldGiveAnErrorWithWrongRomanNumber() {
+    public void shouldRaiseControlledErrorWithWrongRomanNumber() {
     	RomanNumeral input = null;
     	
     	RomanConverter romanConverter = new RomanConverter();
     	
-    	Assertions.assertThrows(RuntimeException.class, ()-> romanConverter.convert(input));
+    	Assertions.assertThrows(InvalidRomanNumeralException.class, ()-> romanConverter.convert(input));
     }
 }

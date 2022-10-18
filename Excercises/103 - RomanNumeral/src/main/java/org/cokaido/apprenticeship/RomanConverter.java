@@ -1,5 +1,10 @@
+package org.cokaido.apprenticeship;
+
 public class RomanConverter {
-    public int convert(RomanNumeral romanValue) {
+    public int convert(RomanNumeral romanValue) throws InvalidRomanNumeralException{
+        if(romanValue == null){
+            throw new InvalidRomanNumeralException();
+        }
         switch (romanValue) {
             case I : return 1;
             case V: return 5;
