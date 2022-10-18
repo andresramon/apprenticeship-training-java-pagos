@@ -5,9 +5,10 @@ public class Leapyear {
     }
 
     public boolean isLeap(int year) {
-        boolean isMultipleOfFourHundred = isMultipleOf(year, 400);
-        boolean isMultipleOfFourButNotByOneHundred = isMultipleOf(year, 4) &&
+        if (isMultipleOf(year, 400)) {
+            return true;
+        }
+        return isMultipleOf(year, 4) &&
                 !isMultipleOf(year, 100);
-        return isMultipleOfFourHundred || isMultipleOfFourButNotByOneHundred;
     }
 }
