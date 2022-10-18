@@ -11,7 +11,11 @@ public class RomanConverterTest {
         return Stream.of(
                 Arguments.of(RomanNumeral.I, 1),
                 Arguments.of(RomanNumeral.V, 5),
-                Arguments.of(RomanNumeral.X, 10)
+                Arguments.of(RomanNumeral.X, 10),
+                Arguments.of(RomanNumeral.L, 50),
+                Arguments.of(RomanNumeral.C, 100),
+                Arguments.of(RomanNumeral.D, 500),
+                Arguments.of(RomanNumeral.M, 1000)
                 );
     }
 
