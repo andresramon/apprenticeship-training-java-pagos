@@ -25,6 +25,9 @@ public class RomanConverter {
         if(romanValue.equals("II")){
             return 2;
         }
+        if(romanValue.equals("III")){
+            return 3;
+        }
         return 0;
     }
 }

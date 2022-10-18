@@ -49,4 +49,12 @@ public class RomanConverterTest {
 
         Assertions.assertEquals(2, romanConverter.convert("II"));
     }
+
+    @Test
+    public void shouldReturnThreeWhenRomanNumberIsIII() throws InvalidRomanNumeralException{
+        //given
+        RomanConverter romanConverter = new RomanConverter();
+
+        Assertions.assertEquals(3, romanConverter.convert("III"));
+    }
 }
