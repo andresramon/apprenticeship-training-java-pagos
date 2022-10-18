@@ -30,4 +30,16 @@ public class LeapyearTest {
 
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {1700, 1800, 1900})
+    public void shouldNotBeLeapYear(int year) {
+        //given
+
+        // when
+        boolean isLeap = leapyear.isLeap(year);
+        // then
+        Assertions.assertFalse(isLeap);
+
+    }
+
 }
