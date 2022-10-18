@@ -8,7 +8,7 @@ public class RomanNumeralTest {
         //given
         RomanNumeral romanNumeral = new RomanNumeral();
         //when and then
-        Assertions.assertEquals(1, romanNumeral.convert("I"));
+        Assertions.assertEquals(1, romanNumeral.convert(RomanValues.I));
 
     }
 }
