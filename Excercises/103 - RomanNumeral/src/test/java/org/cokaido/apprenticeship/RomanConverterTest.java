@@ -41,4 +41,12 @@ public class RomanConverterTest {
     	
     	Assertions.assertThrows(InvalidRomanNumeralException.class, ()-> romanConverter.convert(input));
     }
+
+    @Test
+    public void shouldReturnTwoWhenRomanNumberIsII() throws InvalidRomanNumeralException{
+        //given
+        RomanConverter romanConverter = new RomanConverter();
+
+        Assertions.assertEquals(2, romanConverter.convert("II"));
+    }
 }

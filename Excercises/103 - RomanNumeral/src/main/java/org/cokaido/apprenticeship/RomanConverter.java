@@ -17,4 +17,14 @@ public class RomanConverter {
                 return 0;
         }
     }
+
+    public int convert(String romanValue) throws InvalidRomanNumeralException{
+        if(romanValue == null){
+            throw new InvalidRomanNumeralException();
+        }
+        if(romanValue.equals("II")){
+            return 2;
+        }
+        return 0;
+    }
 }
