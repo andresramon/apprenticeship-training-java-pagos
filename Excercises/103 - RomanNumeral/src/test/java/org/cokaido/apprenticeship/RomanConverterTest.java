@@ -29,17 +29,16 @@ public class RomanConverterTest {
         //given
         RomanConverter romanConverter = new RomanConverter();
         //when and then
-        Assertions.assertEquals(number, romanConverter.convert(romanValue));
+        Assertions.assertEquals(number, romanConverter.convert(romanValue.name()));
 
     }
     
     @Test
     public void shouldRaiseControlledErrorWithWrongRomanNumber() {
-    	RomanNumeral input = null;
-    	
+
     	RomanConverter romanConverter = new RomanConverter();
     	
-    	Assertions.assertThrows(InvalidRomanNumeralException.class, ()-> romanConverter.convert(input));
+    	Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert(null));
     }
 
     @Test
