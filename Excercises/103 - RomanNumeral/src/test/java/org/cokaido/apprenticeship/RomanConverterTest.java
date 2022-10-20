@@ -59,15 +59,6 @@ public class RomanConverterTest {
         Assertions.assertEquals(3, romanConverter.convert("III"));
     }
 
-    @Disabled
-    @Test
-    public void shouldReturnFourWhenRomanNumberIsIV() throws InvalidRomanNumeralException{
-        //given
-        RomanConverter romanConverter = new RomanConverter();
-
-        Assertions.assertEquals(4, romanConverter.convert("IV"));
-    }
-
     @ParameterizedTest
     @ValueSource(strings = {"VVVV", "XXXIIII"})
     public void shouldRaiseErrorWhenInvalidRomanNumber(String romanValue) {
@@ -77,12 +68,20 @@ public class RomanConverterTest {
         Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert(romanValue));
     }
 
-    @Test
-    public void shouldReturnNineteenWithRomanNumberIsXIX() throws InvalidRomanNumeralException {
-        String romanNumber = "XIX";
+    private static Stream<Arguments> romanNumbersWithValues() {
+        return Stream.of(
+                Arguments.of("XIX", 19),
+                Arguments.of("IV", 4),
+                Arguments.of("MCMXLIV", 1944),
+                Arguments.of("MMVI", 2006)
+        );
+    }
 
+    @ParameterizedTest
+    @MethodSource("romanNumbersWithValues")
+    public void shouldCalculateRomanNumberValue(String romanNumber, int value) throws InvalidRomanNumeralException {
         RomanConverter romanConverter = new RomanConverter();
 
-        Assertions.assertEquals(19, romanConverter.convert(romanNumber));
+        Assertions.assertEquals(value, romanConverter.convert(romanNumber));
     }
 }
