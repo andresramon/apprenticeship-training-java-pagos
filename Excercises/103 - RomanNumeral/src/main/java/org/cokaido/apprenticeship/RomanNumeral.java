@@ -1,19 +1,20 @@
 package org.cokaido.apprenticeship;
 
 public enum RomanNumeral {
-    I, V, X, L, C, D, M;
+    I(1), IV(4), V(5), IX(9), X(10), XL(40), L(50), XC(90), C(100), CD(400), D(500), XM(900), M(1000);
 
-    public static int getValue(final RomanNumeral romanNumeral){
-        switch (romanNumeral) {
-        case I : return 1;
-        case V: return 5;
-        case X: return 10;
-        case L: return 50;
-        case C: return 100;
-        case D: return 500;
-        case M: return 1000;
-        default:
-            return 0;
-        }
+    private final int value;
+
+    RomanNumeral(int value) {
+        this.value = value;
     }
+
+    private int getValue() {
+        return value;
+    }
+
+    public static int getValue(RomanNumeral romanNumeral) {
+        return romanNumeral.getValue();
+    }
+
 }

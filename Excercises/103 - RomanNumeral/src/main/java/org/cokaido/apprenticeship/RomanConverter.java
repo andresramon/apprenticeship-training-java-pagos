@@ -1,6 +1,5 @@
 package org.cokaido.apprenticeship;
 
-import java.text.Collator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -11,8 +10,7 @@ public class RomanConverter {
         checkValidRomanValue(romanValue);
 
         IntStream numbersStream = romanValue.chars().
-                mapToObj(c -> (char) c).mapToInt(character ->
-                        RomanNumeral.getValue(RomanNumeral.valueOf(character.toString())));
+                mapToObj(c -> (char) c).mapToInt(character -> RomanNumeral.getValue(RomanNumeral.valueOf(character.toString())));
 
         List<Integer> numbersList = numbersStream.boxed().collect(Collectors.toList());
 
