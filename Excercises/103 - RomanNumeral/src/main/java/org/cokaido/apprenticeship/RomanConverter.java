@@ -3,6 +3,14 @@ package org.cokaido.apprenticeship;
 public class RomanConverter {
 
     public int convert(String romanValue) throws InvalidRomanNumeralException{
+        checkValidRomanValue(romanValue);
+        return romanValue.chars().
+                mapToObj(c -> (char) c).mapToInt(character ->
+                        RomanNumeral.getValue(RomanNumeral.valueOf(character.toString()))).
+                sum();
+    }
+
+    private void checkValidRomanValue(String romanValue) throws InvalidRomanNumeralException {
         if(romanValue == null){
             throw new InvalidRomanNumeralException();
         }
@@ -20,9 +28,5 @@ public class RomanConverter {
                 throw new InvalidRomanNumeralException();
             }
         }
-        return romanValue.chars().
-                mapToObj(c -> (char) c).mapToInt(character ->
-                        RomanNumeral.getValue(RomanNumeral.valueOf(character.toString()))).
-                sum();
     }
 }

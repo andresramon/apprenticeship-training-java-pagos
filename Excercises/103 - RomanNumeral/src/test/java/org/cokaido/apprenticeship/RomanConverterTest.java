@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -67,11 +68,12 @@ public class RomanConverterTest {
         Assertions.assertEquals(4, romanConverter.convert("IV"));
     }
 
-    @Test
-    public void shouldRaiseErrorWhenInvalidRomanNumber() {
+    @ParameterizedTest
+    @ValueSource(strings = {"VVVV", "XXXIIII"})
+    public void shouldRaiseErrorWhenInvalidRomanNumber(String romanValue) {
         //given
         RomanConverter romanConverter = new RomanConverter();
 
-        Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert("VVVV"));
+        Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert(romanValue));
     }
 }
