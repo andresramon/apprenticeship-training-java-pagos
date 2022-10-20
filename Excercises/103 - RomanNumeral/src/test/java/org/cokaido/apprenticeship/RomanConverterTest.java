@@ -1,6 +1,7 @@
 package org.cokaido.apprenticeship;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -34,7 +35,7 @@ public class RomanConverterTest {
     }
     
     @Test
-    public void shouldRaiseControlledErrorWithWrongRomanNumber() {
+    public void shouldRaiseControlledErrorWithWrongRomanNumberWithNull() {
 
     	RomanConverter romanConverter = new RomanConverter();
     	
@@ -55,5 +56,22 @@ public class RomanConverterTest {
         RomanConverter romanConverter = new RomanConverter();
 
         Assertions.assertEquals(3, romanConverter.convert("III"));
+    }
+
+    @Disabled
+    @Test
+    public void shouldReturnFourWhenRomanNumberIsIV() throws InvalidRomanNumeralException{
+        //given
+        RomanConverter romanConverter = new RomanConverter();
+
+        Assertions.assertEquals(4, romanConverter.convert("IV"));
+    }
+
+    @Test
+    public void shouldRaiseErrorWhenInvalidRomanNumber() {
+        //given
+        RomanConverter romanConverter = new RomanConverter();
+
+        Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert("VVVV"));
     }
 }
