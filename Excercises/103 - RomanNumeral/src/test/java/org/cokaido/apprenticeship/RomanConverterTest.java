@@ -76,4 +76,13 @@ public class RomanConverterTest {
 
         Assertions.assertThrows(InvalidRomanNumeralException.class, () -> romanConverter.convert(romanValue));
     }
+
+    @Test
+    public void shouldReturnNineteenWithRomanNumberIsXIX() throws InvalidRomanNumeralException {
+        String romanNumber = "XIX";
+
+        RomanConverter romanConverter = new RomanConverter();
+
+        Assertions.assertEquals(19, romanConverter.convert(romanNumber));
+    }
 }
