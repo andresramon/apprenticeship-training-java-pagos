@@ -28,4 +28,12 @@ public class ArabicToRomanConverterTest {
 
     }
 
+    @Test
+    public void shouldConvertFourToIV() {
+        // given
+        ArabicToRomanConverter converter = new ArabicToRomanConverter();
+        Assertions.assertEquals(converter.convert(4), "IV");
+
+    }
+
 }

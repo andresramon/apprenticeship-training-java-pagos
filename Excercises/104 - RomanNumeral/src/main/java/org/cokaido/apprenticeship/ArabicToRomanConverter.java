@@ -1,7 +1,14 @@
 package org.cokaido.apprenticeship;
 
 public class ArabicToRomanConverter {
+
     public String convert(int arabicNumber) {
-        return RomanNumeral.fromArabicNumeral(arabicNumber).name();
+
+        for (RomanNumeral romanNumeral: RomanNumeral.values()) {
+            if (romanNumeral.getValue() <= arabicNumber) {
+                return romanNumeral.name() + convert(arabicNumber - romanNumeral.getValue());
+            }
+        }
+        return "";
     }
 }
