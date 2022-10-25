@@ -4,11 +4,11 @@ public class ArabicToRomanConverter {
 
     public String convert(int arabicNumber) {
 
-        for (RomanNumeral romanNumeral: RomanNumeral.values()) {
-            if (romanNumeral.getValue() <= arabicNumber) {
-                return romanNumeral.name() + convert(arabicNumber - romanNumeral.getValue());
-            }
+        RomanNumeral romanNumeral = RomanNumeral.fromArabicNumeral(arabicNumber);
+        if (romanNumeral != null) {
+            return romanNumeral.name();
         }
-        return "";
+        return "I" + convert(arabicNumber-1);
+
     }
 }
