@@ -8,7 +8,7 @@ public class ArabicToRomanConverter {
         if (romanNumeral != null) {
             return romanNumeral.name();
         }
-        return "I" + convert(arabicNumber-1);
+        return convert(arabicNumber-1) + "I";
 
     }
 }
