@@ -12,4 +12,12 @@ public class ArabicToRomanConverterTest {
         Assertions.assertEquals(converter.convert(1), "I");
     }
 
+    @Test
+    public void shouldConvertTwoToII() {
+        // given
+        ArabicToRomanConverter converter = new ArabicToRomanConverter();
+        Assertions.assertEquals(converter.convert(2), "II");
+
+    }
+
 }
