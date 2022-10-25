@@ -7,18 +7,11 @@ public class ArabicToRomanConverter {
         if (romanNumeral != null) {
             return romanNumeral.name();
         }
-
-        if (arabicNumber> 50) {
-            return "L"+ convert(arabicNumber-50);
+        for (RomanNumeral numeral : RomanNumeral.values()) {
+            if (numeral.getValue() < arabicNumber) {
+                return numeral.name() + convert(arabicNumber - numeral.getValue());
+            }
         }
-        if (arabicNumber> 40) {
-            return "XL"+ convert(arabicNumber-40);
-        }
-        if (arabicNumber> 10) {
-            return "X"+ convert(arabicNumber-10);
-        }
-
-        return convert(arabicNumber-1) + "I";
-
+        return "";
     }
 }
