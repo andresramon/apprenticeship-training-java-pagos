@@ -20,4 +20,12 @@ public class ArabicToRomanConverterTest {
 
     }
 
+    @Test
+    public void shouldConvertThreeToIII() {
+        // given
+        ArabicToRomanConverter converter = new ArabicToRomanConverter();
+        Assertions.assertEquals(converter.convert(3), "III");
+
+    }
+
 }
