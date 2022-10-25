@@ -2,37 +2,29 @@ package org.cokaido.apprenticeship;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.stream.Stream;
 
 public class ArabicToRomanConverterTest {
 
-    @Test
-    public void shouldConvertOneToI(){
-        // given
-        ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        Assertions.assertEquals(converter.convert(1), "I");
-    }
-
-    @Test
-    public void shouldConvertTwoToII() {
-        // given
-        ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        Assertions.assertEquals(converter.convert(2), "II");
+    public static Stream<Arguments> argumentsToConvertRoman() {
+        return Stream.of(
+                Arguments.of(1,"I"),
+                Arguments.of(2,"II"),
+                Arguments.of(3,"III"),
+                Arguments.of(4, "IV")
+        );
 
     }
 
-    @Test
-    public void shouldConvertThreeToIII() {
-        // given
+    @ParameterizedTest
+    @MethodSource("argumentsToConvertRoman")
+    public void shouldCovertArabicToRoman(int arabic, String roman) {
         ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        Assertions.assertEquals(converter.convert(3), "III");
-
-    }
-
-    @Test
-    public void shouldConvertFourToIV() {
-        // given
-        ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        Assertions.assertEquals(converter.convert(4), "IV");
+        Assertions.assertEquals(converter.convert(arabic), roman);
 
     }
 
