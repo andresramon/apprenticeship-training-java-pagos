@@ -11,10 +11,18 @@ public class TicTacToeGame{
     }
 
     public void play(final Player player) throws InvalidOperationException{
+        checkValidPlayer(player);
+        // TODO play logic
+        changePlayerTurn();
+    }
+
+    private void changePlayerTurn() {
+        currentPlayer = (currentPlayer.equals(playerX)) ? playerO : playerX;
+    }
+
+    private void checkValidPlayer(Player player) throws InvalidOperationException {
         if(!player.equals(currentPlayer)){
             throw new InvalidOperationException();
         }
-        // TODO play logic
-        currentPlayer = (currentPlayer.equals(playerX)) ? playerO : playerX;
     }
 }
