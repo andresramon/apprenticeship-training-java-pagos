@@ -14,5 +14,7 @@ public class TicTacToeGame{
         if(!player.equals(currentPlayer)){
             throw new InvalidOperationException();
         }
+        // TODO play logic
+        currentPlayer = (currentPlayer.equals(playerX)) ? playerO : playerX;
     }
 }
