@@ -14,14 +14,18 @@ public class TicTacToeGame{
     }
 
     public void play(final Player player) throws InvalidOperationException, GameOverException {
-        if (countDown == 0) {
-            throw new GameOverException();
-        }
+        checkGameOver();
 
         checkValidPlayer(player);
         // TODO play logic
         changePlayerTurn();
         countDown--;
+    }
+
+    private void checkGameOver() throws GameOverException {
+        if (countDown == 0) {
+            throw new GameOverException();
+        }
     }
 
     private void changePlayerTurn() {
