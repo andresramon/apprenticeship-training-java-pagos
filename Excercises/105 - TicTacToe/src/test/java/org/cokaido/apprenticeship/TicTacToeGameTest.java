@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 class TicTacToeGameTest{
 
-    public static final String PLAYER_O = "O";
+    private final Player PLAYER_O = new Player("O");
     private final TicTacToeGame game = new TicTacToeGame();
 
     @Test()

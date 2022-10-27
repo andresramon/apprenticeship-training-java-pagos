@@ -2,13 +2,15 @@ package org.cokaido.apprenticeship;
 
 public class TicTacToeGame{
 
-    private String currentPlayer;
+    private final Player playerX = new Player("X");
+    private final Player playerO = new Player("O");
+    private Player currentPlayer;
 
     public TicTacToeGame(){
-        this.currentPlayer = "X";
+        this.currentPlayer = playerX;
     }
 
-    public void play(final String player) throws InvalidOperationException{
+    public void play(final Player player) throws InvalidOperationException{
         if(!player.equals(currentPlayer)){
             throw new InvalidOperationException();
         }
