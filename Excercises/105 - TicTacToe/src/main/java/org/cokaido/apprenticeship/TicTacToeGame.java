@@ -6,14 +6,22 @@ public class TicTacToeGame{
     private final Player playerO = new Player("O");
     private Player currentPlayer;
 
+    private int countDown;
+
     public TicTacToeGame(){
         this.currentPlayer = playerX;
+        this.countDown = 9;
     }
 
-    public void play(final Player player) throws InvalidOperationException{
+    public void play(final Player player) throws InvalidOperationException, GameOverException {
+        if (countDown == 0) {
+            throw new GameOverException();
+        }
+
         checkValidPlayer(player);
         // TODO play logic
         changePlayerTurn();
+        countDown--;
     }
 
     private void changePlayerTurn() {

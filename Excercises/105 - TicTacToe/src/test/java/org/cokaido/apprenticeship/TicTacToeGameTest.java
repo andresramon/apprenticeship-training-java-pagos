@@ -21,8 +21,22 @@ public class TicTacToeGameTest{
     }
 
     @Test
-    public void playerShouldNotPlayTwiceInRow() throws InvalidOperationException {
+    public void playerShouldNotPlayTwiceInRow() throws InvalidOperationException, GameOverException {
         game.play(PLAYER_X);
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_X));
+    }
+
+    @Test
+    public void gameIsDrawAfterNinePlays() throws InvalidOperationException, GameOverException {
+        game.play(PLAYER_X);
+        game.play(PLAYER_O);
+        game.play(PLAYER_X);
+        game.play(PLAYER_O);
+        game.play(PLAYER_X);
+        game.play(PLAYER_O);
+        game.play(PLAYER_X);
+        game.play(PLAYER_O);
+        game.play(PLAYER_X);
+        Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O));
     }
 }
