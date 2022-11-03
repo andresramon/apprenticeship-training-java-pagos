@@ -10,12 +10,19 @@ public class GamePlays {
         this.playersPositionList = new ArrayList<>();
     }
 
-    public void play(PositionType position) {
+    public void takePosition(PositionType position) throws InvalidOperationException {
+        checkValidPosition(position);
         playersPositionList.add(position);
     }
 
-    public boolean isPositionTaken(GamePlays.PositionType position) {
+    private boolean isPositionTaken(GamePlays.PositionType position) {
         return playersPositionList.contains(position);
+    }
+
+    private void checkValidPosition(GamePlays.PositionType position) throws InvalidOperationException {
+        if (isPositionTaken(position)) {
+            throw new InvalidOperationException();
+        }
     }
 
     public enum PositionType {

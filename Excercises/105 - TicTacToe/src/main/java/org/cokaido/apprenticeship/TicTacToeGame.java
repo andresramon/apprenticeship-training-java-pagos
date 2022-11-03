@@ -24,22 +24,12 @@ public class TicTacToeGame  {
 
     public void play(final Player player, final GamePlays.PositionType position) throws InvalidOperationException, GameOverException {
         checkGameOver();
-
         checkValidPlayer(player);
-        checkValidPosition(position);
         // TODO play logic
-        gamePlays.play(position);
+        gamePlays.takePosition(position);
         changePlayerTurn();
         countDown--;
     }
-
-    private void checkValidPosition(GamePlays.PositionType position) throws InvalidOperationException {
-        if (gamePlays.isPositionTaken(position)) {
-            throw new InvalidOperationException();
-        }
-    }
-
-
 
     private void checkGameOver() throws GameOverException {
         if (countDown == 0) {
