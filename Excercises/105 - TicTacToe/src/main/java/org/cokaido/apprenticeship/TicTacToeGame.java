@@ -5,7 +5,7 @@ public class TicTacToeGame  {
     private final Player playerX = new Player("X");
     private final Player playerO = new Player("O");
     private Player currentPlayer;
-    private GamePlays gamePlays;
+    private final GamePlays gamePlays;
 
     public TicTacToeGame(){
         super();
@@ -16,16 +16,15 @@ public class TicTacToeGame  {
     public void play(final Player player, final GamePlays.PositionType position) throws InvalidOperationException, GameOverException, InvalidPlayerException {
         checkValidPlayer(player);
         // TODO play logic
-        gamePlays.takePosition(position);
+        gamePlays.takePosition(position, player);
         changePlayerTurn();
-
     }
 
     private void changePlayerTurn() {
         currentPlayer = (currentPlayer.equals(playerX)) ? playerO : playerX;
     }
 
-    private void checkValidPlayer(Player player) throws InvalidOperationException, InvalidPlayerException {
+    private void checkValidPlayer(Player player) throws InvalidPlayerException {
         if(!player.equals(currentPlayer)){
             throw new InvalidPlayerException();
         }

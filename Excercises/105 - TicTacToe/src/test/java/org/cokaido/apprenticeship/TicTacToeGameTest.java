@@ -51,6 +51,16 @@ public class TicTacToeGameTest{
         GamePlays.PositionType position = GamePlays.PositionType.TOP_LEFT;
         game.play(PLAYER_X, position);
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));
+    }
 
+    @Test
+    public void gameShouldBeOverWhenRowHasBeenTakenByPlayer()
+            throws InvalidPlayerException, InvalidOperationException, GameOverException{
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_LEFT);
+        game.play(PLAYER_O, GamePlays.PositionType.CENTER_LEFT);
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_CENTER);
+        game.play(PLAYER_O, GamePlays.PositionType.BOTTOM_CENTER);
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_RIGHT);
+        Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O, GamePlays.PositionType.BOTTOM_RIGHT));
     }
 }

@@ -1,29 +1,34 @@
 package org.cokaido.apprenticeship;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GamePlays {
-    protected List<PositionType> playersPositionList;
+    protected Map<PositionType, Player> plays;
 
     public GamePlays() {
-        this.playersPositionList = new ArrayList<>();
+        this.plays = new HashMap<>();
     }
 
-    public void takePosition(PositionType position) throws InvalidOperationException, GameOverException {
+    public void takePosition(PositionType position, Player player) throws InvalidOperationException, GameOverException {
         checkGameOver();
         checkValidPosition(position);
-        playersPositionList.add(position);
+        plays.put(position, player);
     }
 
     private void checkGameOver() throws GameOverException {
-        if (playersPositionList.size() == 9) {
+        if (plays.size() == 9 || isRowTakenByPlayer()) {
             throw new GameOverException();
         }
     }
 
+    private boolean isRowTakenByPlayer(){
+        //TODO: Sara sigue
+        return false;
+    }
+
     private boolean isPositionTaken(GamePlays.PositionType position) {
-        return playersPositionList.contains(position);
+        return plays.containsKey(position);
     }
 
     private void checkValidPosition(GamePlays.PositionType position) throws InvalidOperationException {
