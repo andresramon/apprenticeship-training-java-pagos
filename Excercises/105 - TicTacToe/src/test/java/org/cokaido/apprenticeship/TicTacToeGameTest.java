@@ -28,15 +28,23 @@ public class TicTacToeGameTest{
 
     @Test
     public void gameIsDrawAfterNinePlays() throws InvalidOperationException, GameOverException {
-        game.play(PLAYER_X);
-        game.play(PLAYER_O);
-        game.play(PLAYER_X);
-        game.play(PLAYER_O);
-        game.play(PLAYER_X);
-        game.play(PLAYER_O);
-        game.play(PLAYER_X);
-        game.play(PLAYER_O);
-        game.play(PLAYER_X);
-        Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O));
+        game.play(PLAYER_X, new Position(1,1));
+        game.play(PLAYER_O, new Position(1,2));
+        game.play(PLAYER_X, new Position(1,3));
+        game.play(PLAYER_O, new Position(2,1));
+        game.play(PLAYER_X, new Position(2,2));
+        game.play(PLAYER_O, new Position(2,3));
+        game.play(PLAYER_X, new Position(3,1));
+        game.play(PLAYER_O, new Position(3,2));
+        game.play(PLAYER_X, new Position(3,3));
+        Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O, new Position(4,4)));
+    }
+
+    @Test
+    public void twoPlayersNotPlaysInSamePlace() throws InvalidOperationException, GameOverException {
+        Position position = new Position(1,1);
+        game.play(PLAYER_X, position);
+        Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));
+
     }
 }
