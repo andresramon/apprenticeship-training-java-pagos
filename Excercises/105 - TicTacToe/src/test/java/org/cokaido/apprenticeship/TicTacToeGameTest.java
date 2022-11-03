@@ -2,6 +2,7 @@ package org.cokaido.apprenticeship;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TicTacToeGameTest{
@@ -53,6 +54,7 @@ public class TicTacToeGameTest{
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));
     }
 
+    @Disabled
     @Test
     public void gameShouldBeOverWhenRowHasBeenTakenByPlayer()
             throws InvalidPlayerException, InvalidOperationException, GameOverException{
