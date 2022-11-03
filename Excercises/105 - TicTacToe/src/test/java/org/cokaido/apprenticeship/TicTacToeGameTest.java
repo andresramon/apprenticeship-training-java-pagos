@@ -30,22 +30,22 @@ public class TicTacToeGameTest{
     @Test
     @Disabled
     public void gameIsDrawAfterNinePlays() throws InvalidOperationException, GameOverException {
-        game.play(PLAYER_X, TicTacToeGame.PositionType.TOP_LEFT);
-        game.play(PLAYER_O, TicTacToeGame.PositionType.TOP_CENTER);
-        game.play(PLAYER_X, TicTacToeGame.PositionType.TOP_RIGHT);
-        game.play(PLAYER_O, TicTacToeGame.PositionType.CENTER_LEFT);
-        game.play(PLAYER_X, TicTacToeGame.PositionType.CENTER);
-        game.play(PLAYER_O, TicTacToeGame.PositionType.CENTER_RIGHT);
-        game.play(PLAYER_X, TicTacToeGame.PositionType.BOTTOM_LEFT);
-        game.play(PLAYER_O, TicTacToeGame.PositionType.BOTTOM_CENTER);
-        game.play(PLAYER_X, TicTacToeGame.PositionType.BOTTOM_RIGHT);
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_LEFT);
+        game.play(PLAYER_O, GamePlays.PositionType.TOP_CENTER);
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_RIGHT);
+        game.play(PLAYER_O, GamePlays.PositionType.CENTER_LEFT);
+        game.play(PLAYER_X, GamePlays.PositionType.CENTER);
+        game.play(PLAYER_O, GamePlays.PositionType.CENTER_RIGHT);
+        game.play(PLAYER_X, GamePlays.PositionType.BOTTOM_LEFT);
+        game.play(PLAYER_O, GamePlays.PositionType.BOTTOM_CENTER);
+        game.play(PLAYER_X, GamePlays.PositionType.BOTTOM_RIGHT);
         //TODO review When game is draw
         Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O, null));
     }
 
     @Test
     public void twoPlayersNotPlaysInSamePlace() throws InvalidOperationException, GameOverException {
-        TicTacToeGame.PositionType position = TicTacToeGame.PositionType.TOP_LEFT;
+        GamePlays.PositionType position = GamePlays.PositionType.TOP_LEFT;
         game.play(PLAYER_X, position);
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));
 
