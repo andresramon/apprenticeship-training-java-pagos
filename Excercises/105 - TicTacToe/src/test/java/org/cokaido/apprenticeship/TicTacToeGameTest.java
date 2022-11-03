@@ -2,7 +2,6 @@ package org.cokaido.apprenticeship;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class TicTacToeGameTest{
@@ -18,18 +17,22 @@ public class TicTacToeGameTest{
 
     @Test
     public void playerODontPlayFirst(){
-        Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O));
+        Assertions.assertThrows(InvalidPlayerException.class, () -> game.play(PLAYER_O, GamePlays.PositionType.TOP_LEFT));
     }
 
     @Test
-    public void playerShouldNotPlayTwiceInRow() throws InvalidOperationException, GameOverException {
-        game.play(PLAYER_X);
-        Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_X));
+    public void playNullPositionIsInvalid(){
+        Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_X, null));
     }
 
     @Test
-    @Disabled
-    public void gameIsDrawAfterNinePlays() throws InvalidOperationException, GameOverException {
+    public void playerShouldNotPlayTwiceInRow() throws InvalidOperationException, GameOverException, InvalidPlayerException {
+        game.play(PLAYER_X, GamePlays.PositionType.TOP_LEFT);
+        Assertions.assertThrows(InvalidPlayerException.class, () -> game.play(PLAYER_X, GamePlays.PositionType.TOP_CENTER));
+    }
+
+    @Test
+    public void gameIsDrawAfterNinePlays() throws InvalidOperationException, GameOverException, InvalidPlayerException {
         game.play(PLAYER_X, GamePlays.PositionType.TOP_LEFT);
         game.play(PLAYER_O, GamePlays.PositionType.TOP_CENTER);
         game.play(PLAYER_X, GamePlays.PositionType.TOP_RIGHT);
@@ -44,7 +47,7 @@ public class TicTacToeGameTest{
     }
 
     @Test
-    public void twoPlayersNotPlaysInSamePlace() throws InvalidOperationException, GameOverException {
+    public void twoPlayersNotPlaysInSamePlace() throws InvalidOperationException, GameOverException, InvalidPlayerException {
         GamePlays.PositionType position = GamePlays.PositionType.TOP_LEFT;
         game.play(PLAYER_X, position);
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));

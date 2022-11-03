@@ -10,9 +10,16 @@ public class GamePlays {
         this.playersPositionList = new ArrayList<>();
     }
 
-    public void takePosition(PositionType position) throws InvalidOperationException {
+    public void takePosition(PositionType position) throws InvalidOperationException, GameOverException {
+        checkGameOver();
         checkValidPosition(position);
         playersPositionList.add(position);
+    }
+
+    private void checkGameOver() throws GameOverException {
+        if (playersPositionList.size() == 9) {
+            throw new GameOverException();
+        }
     }
 
     private boolean isPositionTaken(GamePlays.PositionType position) {
@@ -20,7 +27,7 @@ public class GamePlays {
     }
 
     private void checkValidPosition(GamePlays.PositionType position) throws InvalidOperationException {
-        if (isPositionTaken(position)) {
+        if (position == null || isPositionTaken(position)) {
             throw new InvalidOperationException();
         }
     }
