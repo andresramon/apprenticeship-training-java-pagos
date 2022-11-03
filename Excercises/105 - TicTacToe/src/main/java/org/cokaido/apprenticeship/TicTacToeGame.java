@@ -5,12 +5,17 @@ import java.util.List;
 
 public class TicTacToeGame{
 
+    public enum PositionType {
+        TOP_LEFT, TOP_CENTER, TOP_RIGHT,
+        CENTER_LEFT, CENTER, CENTER_RIGHT,
+        BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
+    }
     private final Player playerX = new Player("X");
     private final Player playerO = new Player("O");
     private Player currentPlayer;
 
     private int countDown;
-    private List<Position> playersPositionList;
+    private List<PositionType> playersPositionList;
 
     public TicTacToeGame(){
         this.currentPlayer = playerX;
@@ -23,7 +28,7 @@ public class TicTacToeGame{
         play(player, null);
     }
 
-    public void play(final Player player, final Position position) throws InvalidOperationException, GameOverException {
+    public void play(final Player player, final PositionType position) throws InvalidOperationException, GameOverException {
         checkGameOver();
 
         checkValidPlayer(player);
@@ -34,7 +39,7 @@ public class TicTacToeGame{
         countDown--;
     }
 
-    private void checkValidPosition(Position position) throws InvalidOperationException {
+    private void checkValidPosition(PositionType position) throws InvalidOperationException {
         if (playersPositionList.contains(position)) {
             throw new InvalidOperationException();
         }
