@@ -29,13 +29,21 @@ public class GamePlays{
 
     private boolean isRowTakenByPlayer(){
         for(int index = 0; index < winnerPlays.length; index++){
-            if (plays.containsKey(winnerPlays[index][0]) && plays.containsKey(winnerPlays[index][1])
-                    && plays.containsKey(winnerPlays[index][2]) && plays.get(winnerPlays[index][0])
-                    .equals(plays.get(winnerPlays[index][1])) && plays.get(winnerPlays[index][1])
-                    .equals(plays.get(winnerPlays[index][2]))){
+            if (isPositionsArePlayed(index) && isPositionsPlayedByTheSamePlayer(index)){
                 return true;
             }
-        } return false;
+        }
+        return false;
+    }
+
+    private boolean isPositionsPlayedByTheSamePlayer(int index){
+        return plays.get(winnerPlays[index][0]).equals(plays.get(winnerPlays[index][1])) && plays.get(
+                winnerPlays[index][1]).equals(plays.get(winnerPlays[index][2]));
+    }
+
+    private boolean isPositionsArePlayed(int index){
+        return plays.containsKey(winnerPlays[index][0]) && plays.containsKey(winnerPlays[index][1])
+                && plays.containsKey(winnerPlays[index][2]);
     }
 
     private boolean isPositionTaken(GamePlays.PositionType position){
