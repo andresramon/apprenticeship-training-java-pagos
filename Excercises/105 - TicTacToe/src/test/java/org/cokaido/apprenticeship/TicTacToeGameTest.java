@@ -54,7 +54,6 @@ public class TicTacToeGameTest{
         Assertions.assertThrows(InvalidOperationException.class, () -> game.play(PLAYER_O, position));
     }
 
-    @Disabled
     @Test
     public void gameShouldBeOverWhenRowHasBeenTakenByPlayer()
             throws InvalidPlayerException, InvalidOperationException, GameOverException{
