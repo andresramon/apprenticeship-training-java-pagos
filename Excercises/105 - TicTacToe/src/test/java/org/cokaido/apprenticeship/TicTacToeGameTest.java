@@ -61,28 +61,43 @@ public class TicTacToeGameTest{
 
     public static Stream<Arguments> winnerRowCombinations() {
         return Stream.of(
-                Arguments.of(List.of(GamePlays.PositionType.TOP_LEFT,
+                Arguments.of("Row top",List.of(GamePlays.PositionType.TOP_LEFT,
                         GamePlays.PositionType.CENTER_LEFT,
                         GamePlays.PositionType.TOP_CENTER,
                         GamePlays.PositionType.BOTTOM_CENTER,
                         GamePlays.PositionType.TOP_RIGHT)),
-                Arguments.of(List.of(GamePlays.PositionType.CENTER_LEFT,
+                Arguments.of("Row center",List.of(GamePlays.PositionType.CENTER_LEFT,
                         GamePlays.PositionType.TOP_LEFT,
                         GamePlays.PositionType.CENTER,
                         GamePlays.PositionType.BOTTOM_CENTER,
                         GamePlays.PositionType.CENTER_RIGHT)),
-                Arguments.of(List.of(GamePlays.PositionType.BOTTOM_LEFT,
+                Arguments.of("Row bottom",List.of(GamePlays.PositionType.BOTTOM_LEFT,
                         GamePlays.PositionType.CENTER_LEFT,
                         GamePlays.PositionType.BOTTOM_CENTER,
                         GamePlays.PositionType.TOP_CENTER,
+                        GamePlays.PositionType.BOTTOM_RIGHT)),
+                Arguments.of("Column left",List.of(GamePlays.PositionType.TOP_LEFT,
+                        GamePlays.PositionType.BOTTOM_RIGHT,
+                        GamePlays.PositionType.CENTER_LEFT,
+                        GamePlays.PositionType.BOTTOM_CENTER,
+                        GamePlays.PositionType.BOTTOM_LEFT)),
+                Arguments.of("Column center",List.of(GamePlays.PositionType.TOP_CENTER,
+                        GamePlays.PositionType.BOTTOM_RIGHT,
+                        GamePlays.PositionType.CENTER,
+                        GamePlays.PositionType.BOTTOM_LEFT,
+                        GamePlays.PositionType.BOTTOM_CENTER)),
+                Arguments.of("Column right",List.of(GamePlays.PositionType.TOP_RIGHT,
+                        GamePlays.PositionType.BOTTOM_LEFT,
+                        GamePlays.PositionType.CENTER_RIGHT,
+                        GamePlays.PositionType.BOTTOM_CENTER,
                         GamePlays.PositionType.BOTTOM_RIGHT))
         );
 
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name = "{0}")
     @MethodSource("winnerRowCombinations")
-    public void gameShouldBeOverWhenRowHasBeenTakenByPlayer(List<GamePlays.PositionType> positionTypeList)
+    public void gameShouldBeOverWhenRowHasBeenTakenByPlayer(String descriptionScenario, List<GamePlays.PositionType> positionTypeList)
             throws InvalidPlayerException, InvalidOperationException, GameOverException{
         game.play(PLAYER_X, positionTypeList.get(0));
         game.play(PLAYER_O, positionTypeList.get(1));
@@ -91,5 +106,6 @@ public class TicTacToeGameTest{
         game.play(PLAYER_X, positionTypeList.get(4));
         Assertions.assertThrows(GameOverException.class, () -> game.play(PLAYER_O, GamePlays.PositionType.BOTTOM_RIGHT));
     }
+
 
 }

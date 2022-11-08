@@ -12,7 +12,10 @@ public class GamePlays{
         this.plays = new HashMap<>();
         winnerPlays = new PositionType[][] {{PositionType.TOP_LEFT, PositionType.TOP_CENTER, PositionType.TOP_RIGHT},
                 {PositionType.CENTER_LEFT, PositionType.CENTER, PositionType.CENTER_RIGHT},
-                {PositionType.BOTTOM_LEFT, PositionType.BOTTOM_CENTER, PositionType.BOTTOM_RIGHT}};
+                {PositionType.BOTTOM_LEFT, PositionType.BOTTOM_CENTER, PositionType.BOTTOM_RIGHT},
+                {PositionType.TOP_LEFT, PositionType.CENTER_LEFT, PositionType.BOTTOM_LEFT},
+                {PositionType.TOP_CENTER, PositionType.CENTER, PositionType.BOTTOM_CENTER},
+                {PositionType.TOP_RIGHT, PositionType.CENTER_RIGHT, PositionType.BOTTOM_RIGHT}};
     }
 
     public void takePosition(PositionType position, Player player) throws InvalidOperationException, GameOverException{
