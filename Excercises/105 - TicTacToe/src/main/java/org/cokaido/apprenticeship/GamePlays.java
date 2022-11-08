@@ -22,12 +22,12 @@ public class GamePlays{
     }
 
     private void checkGameOver() throws GameOverException{
-        if(plays.size() == 9 || isRowTakenByPlayer()){
+        if(plays.size() == 9 || isWinnerCombination()){
             throw new GameOverException();
         }
     }
 
-    private boolean isRowTakenByPlayer(){
+    private boolean isWinnerCombination(){
         for(int index = 0; index < winnerPlays.length; index++){
             if (isPositionsArePlayed(index) && isPositionsPlayedByTheSamePlayer(index)){
                 return true;
