@@ -97,7 +97,7 @@ public class TicTacToeGameTest{
 
     @ParameterizedTest(name = "{0}")
     @MethodSource("winnerRowCombinations")
-    public void gameShouldBeOverWhenRowHasBeenTakenByPlayer(String descriptionScenario, List<GamePlays.PositionType> positionTypeList)
+    public void gameShouldBeOverWhenCombinationWinnerPlayed(String descriptionScenario, List<GamePlays.PositionType> positionTypeList)
             throws InvalidPlayerException, InvalidOperationException, GameOverException{
         game.play(PLAYER_X, positionTypeList.get(0));
         game.play(PLAYER_O, positionTypeList.get(1));

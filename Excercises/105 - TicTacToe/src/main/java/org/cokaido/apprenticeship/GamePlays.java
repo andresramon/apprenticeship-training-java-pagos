@@ -2,20 +2,14 @@ package org.cokaido.apprenticeship;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class GamePlays{
+    private final WinnerPlays winnerPlays = new WinnerPlays();
     protected Map<PositionType, Player> plays;
-
-    private PositionType[][] winnerPlays;
 
     public GamePlays(){
         this.plays = new HashMap<>();
-        winnerPlays = new PositionType[][] {{PositionType.TOP_LEFT, PositionType.TOP_CENTER, PositionType.TOP_RIGHT},
-                {PositionType.CENTER_LEFT, PositionType.CENTER, PositionType.CENTER_RIGHT},
-                {PositionType.BOTTOM_LEFT, PositionType.BOTTOM_CENTER, PositionType.BOTTOM_RIGHT},
-                {PositionType.TOP_LEFT, PositionType.CENTER_LEFT, PositionType.BOTTOM_LEFT},
-                {PositionType.TOP_CENTER, PositionType.CENTER, PositionType.BOTTOM_CENTER},
-                {PositionType.TOP_RIGHT, PositionType.CENTER_RIGHT, PositionType.BOTTOM_RIGHT}};
     }
 
     public void takePosition(PositionType position, Player player) throws InvalidOperationException, GameOverException{
@@ -25,28 +19,27 @@ public class GamePlays{
     }
 
     private void checkGameOver() throws GameOverException{
-        if(plays.size() == 9 || isWinnerCombination()){
+        if(plays.size() == 9 || existsWinnerCombination()){
             throw new GameOverException();
         }
     }
 
-    private boolean isWinnerCombination(){
-        for(int index = 0; index < winnerPlays.length; index++){
-            if (isPositionsArePlayed(index) && isPositionsPlayedByTheSamePlayer(index)){
-                return true;
-            }
-        }
-        return false;
+    private boolean existsWinnerCombination(){
+        return Stream.of(winnerPlays.getWinnerPlays()).anyMatch(this::isWinnerCombination);
     }
 
-    private boolean isPositionsPlayedByTheSamePlayer(int index){
-        return plays.get(winnerPlays[index][0]).equals(plays.get(winnerPlays[index][1])) && plays.get(
-                winnerPlays[index][1]).equals(plays.get(winnerPlays[index][2]));
+    private boolean isWinnerCombination(PositionType[] combination) {
+        return isPositionsArePlayed(combination) && isPositionsPlayedByTheSamePlayer(combination);
     }
 
-    private boolean isPositionsArePlayed(int index){
-        return plays.containsKey(winnerPlays[index][0]) && plays.containsKey(winnerPlays[index][1])
-                && plays.containsKey(winnerPlays[index][2]);
+    private boolean isPositionsPlayedByTheSamePlayer(PositionType[] combination){
+        return plays.get(combination[0]).equals(plays.get(combination[1])) && plays.get(
+                combination[1]).equals(plays.get(combination[2]));
+    }
+
+    private boolean isPositionsArePlayed(PositionType[] combination){
+        return plays.containsKey(combination[0]) && plays.containsKey(combination[1])
+                && plays.containsKey(combination[2]);
     }
 
     private boolean isPositionTaken(GamePlays.PositionType position){
