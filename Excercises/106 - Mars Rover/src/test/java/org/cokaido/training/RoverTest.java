@@ -13,7 +13,8 @@ public class RoverTest{
         return Stream.of(
                 Arguments.of("5 5\n0 1 N\nA\n", "0 2 N"),
                 Arguments.of("5 5\n0 2 N\nA\n", "0 3 N"),
-                Arguments.of("5 5\n1 2 N\nA\n", "1 3 N")
+                Arguments.of("5 5\n1 2 N\nA\n", "1 3 N"),
+                Arguments.of("5 5\n1 2 E\nA\n", "2 2 E")
         );
     }
 
