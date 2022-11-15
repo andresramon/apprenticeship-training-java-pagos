@@ -7,6 +7,6 @@ public class Rover{
 
         final int nextPosition = Integer.parseInt(initialPosition[1]) + 1;
 
-        return "0 " + nextPosition + " N";
+        return initialPosition[0]+ " " + nextPosition + " N";
     }
 }
