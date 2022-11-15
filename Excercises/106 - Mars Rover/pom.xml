@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>groupId</groupId>
-    <artifactId>105-TicTacToe</artifactId>
+    <artifactId>106-MarsRover</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
