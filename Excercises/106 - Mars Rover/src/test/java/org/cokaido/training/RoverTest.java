@@ -29,4 +29,21 @@ public class RoverTest{
 
         Assertions.assertEquals(expectedPosition, position);
     }
+
+    private static Stream<Arguments> argumentsRotateLeft(){
+        return Stream.of(
+                Arguments.of("5 5\n0 1 N\nI\n", "0 1 O")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("argumentsRotateLeft")
+    public void shouldRotateToLeft(String command, String expectedPosition){
+        final Rover rover = new Rover();
+
+        String position = rover.execute(command);
+
+        Assertions.assertEquals(expectedPosition, position);
+    }
+
 }
