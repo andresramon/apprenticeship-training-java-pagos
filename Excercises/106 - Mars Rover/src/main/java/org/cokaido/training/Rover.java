@@ -9,9 +9,18 @@ public class Rover{
             final int nextPosition = Integer.parseInt(initialPosition[0]) + 1;
             return nextPosition+ " " + initialPosition[1] + " "+ initialPosition[2];
         }
+
+        if (isFacingWest(initialPosition[2])) {
+            final int nextPosition = Integer.parseInt(initialPosition[0]) - 1;
+            return nextPosition+ " " + initialPosition[1] + " "+ initialPosition[2];
+        }
         final int nextPosition = Integer.parseInt(initialPosition[1]) + 1;
 
         return initialPosition[0]+ " " + nextPosition + " "+ initialPosition[2];
+    }
+
+    private boolean isFacingWest(String facing) {
+        return "O".equals(facing);
     }
 
     private boolean isFacingEast(String facing) {
