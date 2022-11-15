@@ -19,6 +19,11 @@ public class Rover{
             final int nextPosition = Integer.parseInt(initialPosition[0]) - 1;
             return nextPosition+ " " + initialPosition[1] + " "+ initialPosition[2];
         }
+
+        if (isFacing(CardinalPoints.S, initialPosition[2])) {
+            final int nextPosition = Integer.parseInt(initialPosition[1]) - 1;
+            return initialPosition[0]+ " " + nextPosition + " "+ initialPosition[2];
+        }
         final int nextPosition = Integer.parseInt(initialPosition[1]) + 1;
 
         return initialPosition[0]+ " " + nextPosition + " "+ initialPosition[2];
