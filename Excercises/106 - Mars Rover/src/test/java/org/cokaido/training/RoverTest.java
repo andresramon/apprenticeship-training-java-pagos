@@ -32,7 +32,8 @@ public class RoverTest{
 
     private static Stream<Arguments> argumentsRotateLeft(){
         return Stream.of(
-                Arguments.of("5 5\n0 1 N\nI\n", "0 1 O")
+                Arguments.of("5 5\n0 1 N\nI\n", "0 1 O"),
+                Arguments.of("5 5\n0 1 O\nI\n", "0 1 S")
         );
     }
 

@@ -17,7 +17,13 @@ public class Rover{
             return stringJoiner.toString();
         }
         if(splitCommand[2].equals("I")) {
-           return initialPosition[0] + " " + initialPosition[1] + " " + "O";
+            if(initialPosition[2].equals("N")){
+                return initialPosition[0] + " " + initialPosition[1] + " " + "O";
+            }
+
+            if(initialPosition[2].equals("O")){
+                return initialPosition[0] + " " + initialPosition[1] + " " + "S";
+            }
         }
         return "";
     }
