@@ -34,9 +34,10 @@ public class RoverTest{
         return Stream.of(
                 Arguments.of("5 5\n0 1 N\nI\n", "0 1 O"),
                 Arguments.of("5 5\n0 1 O\nI\n", "0 1 S"),
-                Arguments.of("5 5\n0 1 S\nI\n", "0 1 E")
+                Arguments.of("5 5\n0 1 S\nI\n", "0 1 E"),
+                Arguments.of("5 5\n0 1 E\nI\n", "0 1 N")
 
-                );
+        );
     }
 
     @ParameterizedTest
