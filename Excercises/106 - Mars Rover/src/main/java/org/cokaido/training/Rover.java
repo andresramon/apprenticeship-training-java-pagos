@@ -9,22 +9,20 @@ public class Rover{
         final String[] initialPosition = splitCommand[1].split(" ");
 
         if(splitCommand[2].equals("A")) {
-            String[] finalPosition = calculatePosition(initialPosition);
-            StringJoiner stringJoiner = new StringJoiner(" ");
-            for (String position : finalPosition) {
-                stringJoiner.add(position);
-            }
-            return stringJoiner.toString();
+            return formatPosition(calculatePosition(initialPosition));
         }
         if(splitCommand[2].equals("I")) {
-            String[] finalPosition = rotateLeft(initialPosition);
-            StringJoiner stringJoiner = new StringJoiner(" ");
-            for (String position : finalPosition) {
-                stringJoiner.add(position);
-            }
-            return stringJoiner.toString();
+            return formatPosition(rotateLeft(initialPosition));
         }
         return "";
+    }
+
+    private static String formatPosition(String[] finalPosition){
+        StringJoiner stringJoiner = new StringJoiner(" ");
+        for (String position : finalPosition) {
+            stringJoiner.add(position);
+        }
+        return stringJoiner.toString();
     }
 
     private String[] rotateLeft(String[] initialPosition) {
