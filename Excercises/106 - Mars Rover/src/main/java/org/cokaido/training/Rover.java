@@ -33,6 +33,9 @@ public class Rover{
         if(orientation.equals("N")) {
             return "O";
         }
+        if(orientation.equals("S")) {
+            return "E";
+        }
 
         return "S";
     }
