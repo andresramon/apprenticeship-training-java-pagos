@@ -10,5 +10,11 @@ public class RoverState {
         this.orientation = orientation;
     }
 
+    public Orientation getOrientation() {
+        return orientation;
+    }
 
+    public Position getPosition() {
+        return position;
+    }
 }

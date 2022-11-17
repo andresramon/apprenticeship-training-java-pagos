@@ -10,4 +10,12 @@ public class Position {
         this.yAxis = yAxis;
     }
 
+    public int getXAxis() {
+        return xAxis;
+    }
+
+    public int getYAxis() {
+        return yAxis;
+    }
+
 }

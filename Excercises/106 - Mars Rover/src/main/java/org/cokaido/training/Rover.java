@@ -23,16 +23,14 @@ public class Rover{
                 Orientation.fromValue(initialPosition[2])
         );
 
-
-
         if(splitCommand[2].equals(FORWARD)) {
-            return formatPosition(calculatePosition(initialPosition, true));
+            return formatPosition(calculatePosition(true));
         }
         if(splitCommand[2].equals(LEFT)) {
             return formatPosition(rotateLeft(initialPosition));
         }
         if(splitCommand[2].equals(BACKWARD)) {
-            return formatPosition(calculatePosition(initialPosition, false));
+            return formatPosition(calculatePosition(false));
         }
         if(splitCommand[2].equals(RIGHT)) {
             return formatPosition(rotateRight(initialPosition));
@@ -82,24 +80,24 @@ public class Rover{
         return SOUTH;
     }
 
-    private String[] calculatePosition(String[] initialPosition, boolean forward) {
-        CardinalPoints cardinalPoint = CardinalPoints.valueOf(initialPosition[2]);
+    private String[] calculatePosition(boolean forward) {
+        CardinalPoints cardinalPoint = CardinalPoints.valueOf(roverState.getOrientation().getValue());
         if(forward){
-            return moveForward(initialPosition, cardinalPoint);
+            return moveForward(cardinalPoint);
         }
-        return moveBackward(initialPosition, cardinalPoint);
+        return moveBackward(cardinalPoint);
     }
 
-    private String[] moveBackward(String[] initialPosition, CardinalPoints cardinalPoint) {
-        final int nextPositionX = Integer.parseInt(initialPosition[0]) - cardinalPoint.getXAxis();
-        final int nextPositionY = Integer.parseInt(initialPosition[1]) - cardinalPoint.getYAxis();
-        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), initialPosition[2]};
+    private String[] moveBackward(CardinalPoints cardinalPoint) {
+        final int nextPositionX = roverState.getPosition().getXAxis() - cardinalPoint.getXAxis();
+        final int nextPositionY = roverState.getPosition().getYAxis() - cardinalPoint.getYAxis();
+        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), roverState.getOrientation().getValue()};
     }
 
-    private String[] moveForward(String[] initialPosition, CardinalPoints cardinalPoint) {
-        final int nextPositionX = Integer.parseInt(initialPosition[0]) + cardinalPoint.getXAxis();
-        final int nextPositionY = Integer.parseInt(initialPosition[1]) + cardinalPoint.getYAxis();
-        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), initialPosition[2]};
+    private String[] moveForward(CardinalPoints cardinalPoint) {
+        final int nextPositionX = roverState.getPosition().getXAxis() + cardinalPoint.getXAxis();
+        final int nextPositionY = roverState.getPosition().getYAxis() + cardinalPoint.getYAxis();
+        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), roverState.getOrientation().getValue()};
     }
 
 
