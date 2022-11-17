@@ -13,9 +13,17 @@ public class Rover{
     private static final String BACKWARD = "R";
     public static final String RIGHT = "D";
 
+    private RoverState roverState;
+
     public String execute(String command){
         final String[] splitCommand = command.split("\n");
         final String[] initialPosition = splitCommand[1].split(" ");
+        roverState = new RoverState(
+                new Position(Integer.parseInt(initialPosition[0]), Integer.parseInt(initialPosition[1])),
+                Orientation.fromValue(initialPosition[2])
+        );
+
+
 
         if(splitCommand[2].equals(FORWARD)) {
             return formatPosition(calculatePosition(initialPosition, true));
