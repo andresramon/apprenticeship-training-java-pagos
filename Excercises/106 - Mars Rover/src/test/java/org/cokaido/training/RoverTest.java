@@ -52,8 +52,12 @@ public class RoverTest{
 
     private static Stream<Arguments> argumentsMoveBackward(){
         return Stream.of(
-                Arguments.of("5 5\n0 1 N\nR\n", "0 0 N")
-
+                Arguments.of("5 5\n0 1 N\nR\n", "0 0 N"),
+                Arguments.of("5 5\n0 3 N\nR\n", "0 2 N"),
+                Arguments.of("5 5\n1 3 N\nR\n", "1 2 N"),
+                Arguments.of("5 5\n2 2 E\nR\n", "1 2 E"),
+                Arguments.of("5 5\n0 2 O\nR\n", "1 2 O"),
+                Arguments.of("5 5\n1 1 S\nR\n", "1 2 S")
         );
     }
 
