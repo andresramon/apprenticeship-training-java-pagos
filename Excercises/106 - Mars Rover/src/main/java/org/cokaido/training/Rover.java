@@ -17,15 +17,26 @@ public class Rover{
             return stringJoiner.toString();
         }
         if(splitCommand[2].equals("I")) {
-            if(initialPosition[2].equals("N")){
-                return initialPosition[0] + " " + initialPosition[1] + " " + "O";
+            String[] finalPosition = rotateLeft(initialPosition);
+            StringJoiner stringJoiner = new StringJoiner(" ");
+            for (String position : finalPosition) {
+                stringJoiner.add(position);
             }
-
-            if(initialPosition[2].equals("O")){
-                return initialPosition[0] + " " + initialPosition[1] + " " + "S";
-            }
+            return stringJoiner.toString();
         }
         return "";
+    }
+
+    private String[] rotateLeft(String[] initialPosition) {
+        return new String[]{initialPosition[0], initialPosition[1], getLeftOrientation(initialPosition[2])};
+    }
+
+    private String getLeftOrientation(String orientation) {
+        if(orientation.equals("N")) {
+            return "O";
+        }
+
+        return "S";
     }
 
     private String[] calculatePosition(String[] initialPosition) {
