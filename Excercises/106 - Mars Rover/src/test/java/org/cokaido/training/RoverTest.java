@@ -71,4 +71,24 @@ public class RoverTest{
         Assertions.assertEquals(expectedPosition, position);
     }
 
+    private static Stream<Arguments> argumentsRotateRight(){
+        return Stream.of(
+                Arguments.of("5 5\n0 1 N\nD\n", "0 1 E")/*,
+                Arguments.of("5 5\n0 1 O\nD\n", "0 1 N"),
+                Arguments.of("5 5\n0 1 S\nD\n", "0 1 O"),
+                Arguments.of("5 5\n0 1 E\nD\n", "0 1 S")*/
+
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("argumentsRotateRight")
+    public void shouldRotateToRight(String command, String expectedPosition){
+        final Rover rover = new Rover();
+
+        String position = rover.execute(command);
+
+        Assertions.assertEquals(expectedPosition, position);
+    }
+
 }

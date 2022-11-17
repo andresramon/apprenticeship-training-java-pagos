@@ -11,6 +11,7 @@ public class Rover{
     private static final String FORWARD = "A";
     private static final String LEFT = "I";
     private static final String BACKWARD = "R";
+    public static final String RIGHT = "D";
 
     public String execute(String command){
         final String[] splitCommand = command.split("\n");
@@ -25,6 +26,9 @@ public class Rover{
         if(splitCommand[2].equals(BACKWARD)) {
             return formatPosition(calculatePosition(initialPosition, false));
         }
+        if(splitCommand[2].equals(RIGHT)) {
+            return formatPosition(rotateRight(initialPosition));
+        }
         return "";
     }
 
@@ -38,6 +42,17 @@ public class Rover{
 
     private String[] rotateLeft(String[] initialPosition) {
         return new String[]{initialPosition[0], initialPosition[1], getLeftOrientation(initialPosition[2])};
+    }
+
+    private String[] rotateRight(String[] initialPosition) {
+        return new String[]{initialPosition[0], initialPosition[1], getRightOrientation(initialPosition[2])};
+    }
+
+    private String getRightOrientation(String orientation) {
+        if (orientation.equals(NORTH)) {
+            return EAST;
+        }
+        return null;
     }
 
     private String getLeftOrientation(String orientation) {
