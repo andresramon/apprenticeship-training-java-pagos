@@ -52,7 +52,13 @@ public class Rover{
         if (orientation.equals(NORTH)) {
             return EAST;
         }
-        return null;
+        if (orientation.equals(SOUTH)) {
+            return WEST;
+        }
+        if (orientation.equals(EAST)) {
+            return SOUTH;
+        }
+        return NORTH;
     }
 
     private String getLeftOrientation(String orientation) {
