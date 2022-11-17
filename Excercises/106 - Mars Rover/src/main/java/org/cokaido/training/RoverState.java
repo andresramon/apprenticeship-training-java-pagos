@@ -10,11 +10,23 @@ public class RoverState {
         this.orientation = orientation;
     }
 
-    public Orientation getOrientation() {
-        return orientation;
+    public String[] calculatePosition(boolean forward) {
+        CardinalPoints cardinalPoint = CardinalPoints.valueOf(orientation.getValue());
+        if(forward){
+            return moveForward(cardinalPoint);
+        }
+        return moveBackward(cardinalPoint);
     }
 
-    public Position getPosition() {
-        return position;
+    private String[] moveBackward(CardinalPoints cardinalPoint) {
+        final int nextPositionX = position.getXAxis() - cardinalPoint.getXAxis();
+        final int nextPositionY = position.getYAxis() - cardinalPoint.getYAxis();
+        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), orientation.getValue()};
+    }
+
+    private String[] moveForward(CardinalPoints cardinalPoint) {
+        final int nextPositionX = position.getXAxis() + cardinalPoint.getXAxis();
+        final int nextPositionY = position.getYAxis() + cardinalPoint.getYAxis();
+        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), orientation.getValue()};
     }
 }
