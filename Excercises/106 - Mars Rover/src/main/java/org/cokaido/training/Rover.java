@@ -9,10 +9,13 @@ public class Rover{
         final String[] initialPosition = splitCommand[1].split(" ");
 
         if(splitCommand[2].equals("A")) {
-            return formatPosition(calculatePosition(initialPosition));
+            return formatPosition(calculatePosition(initialPosition, true));
         }
         if(splitCommand[2].equals("I")) {
             return formatPosition(rotateLeft(initialPosition));
+        }
+        if(splitCommand[2].equals("R")) {
+            return formatPosition(calculatePosition(initialPosition, false));
         }
         return "";
     }
@@ -39,15 +42,19 @@ public class Rover{
         if(orientation.equals("E")) {
             return "N";
         }
-
         return "S";
     }
 
-    private String[] calculatePosition(String[] initialPosition) {
+    private String[] calculatePosition(String[] initialPosition, boolean forward) {
         CardinalPoints cardinalPoint = CardinalPoints.valueOf(initialPosition[2]);
-        final int nextPositionX = Integer.parseInt(initialPosition[0]) + cardinalPoint.getXAxis();
-        final int nextPositionY = Integer.parseInt(initialPosition[1]) + cardinalPoint.getYAxis();
-        return new String[]{String.valueOf(nextPositionX), String.valueOf(nextPositionY), initialPosition[2]};
+        if(forward){
+            final int nextPositionX = Integer.parseInt(initialPosition[0]) + cardinalPoint.getXAxis();
+            final int nextPositionY = Integer.parseInt(initialPosition[1]) + cardinalPoint.getYAxis();
+            return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), initialPosition[2]};
+        }
+        final int nextPositionX = Integer.parseInt(initialPosition[0]) - cardinalPoint.getXAxis();
+        final int nextPositionY = Integer.parseInt(initialPosition[1]) - cardinalPoint.getYAxis();
+        return new String[] {String.valueOf(nextPositionX), String.valueOf(nextPositionY), initialPosition[2]};
     }
 
 

@@ -50,4 +50,21 @@ public class RoverTest{
         Assertions.assertEquals(expectedPosition, position);
     }
 
+    private static Stream<Arguments> argumentsMoveBackward(){
+        return Stream.of(
+                Arguments.of("5 5\n0 1 N\nR\n", "0 0 N")
+
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("argumentsMoveBackward")
+    public void shouldMoveBackward(String command, String expectedPosition){
+        final Rover rover = new Rover();
+
+        String position = rover.execute(command);
+
+        Assertions.assertEquals(expectedPosition, position);
+    }
+
 }
